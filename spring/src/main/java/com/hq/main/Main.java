@@ -13,6 +13,9 @@ public class Main {
             case "case1":
                 cs.Case1();
                 break;
+            case "case2":
+                cs.Case2();
+                break;
             default:
                 System.out.println("Not support");
         }
