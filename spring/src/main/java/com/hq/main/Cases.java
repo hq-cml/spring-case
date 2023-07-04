@@ -1,7 +1,9 @@
 package com.hq.main;
 
 import com.hq.entity.Classes;
+import com.hq.entity.DataSource;
 import com.hq.entity.Student;
+import com.hq.entity.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -51,16 +53,44 @@ public class Cases {
         System.out.println(classes);
     }
     public void Case3() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-scope.xml");
+        // Note: scope作用域，单例模式，创建一次
+        //        这是一种预加载模式！
+        User user1 = (User) applicationContext.getBean("user1");
+        User user2 = (User) applicationContext.getBean("user1");
+        //System.out.println(user1.equals(user2));
+        System.out.println(user1==user2); // Note：== 直接判断引用地址
+        System.out.println("--------------------");
 
+        // Note: scope作用域，prototype 原型模式
+        //        非单例模式，创建两次
+        //        这是一种lazy模式！
+        User user3 = (User) applicationContext.getBean("user2");
+        User user4 = (User) applicationContext.getBean("user2");
+        //System.out.println(user3.equals(user4));
+        System.out.println(user3==user4);
+        System.out.println("--------------------");
+
+        // Note: bean的继承
+        User user5 = (User) applicationContext.getBean("user3");
+        System.out.println(user5);
     }
     public void Case4() {
-
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-dependence.xml");
+        // Note: 默认情况下由xml中bean的定义顺序来创建bean
     }
     public void Case5() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-properties.xml");
+        // Note: 最终效果，改了properties文件，xml自动更新！
+        DataSource dataSource = (DataSource) applicationContext.getBean("dataSource");
+        System.out.println(dataSource);
 
     }
     public void Case6() {
-
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-p.xml");
+        // Note: 测试p命名空间
+        Student student = (Student) applicationContext.getBean("student");
+        System.out.println(student);
     }
     public void Case7() {
 

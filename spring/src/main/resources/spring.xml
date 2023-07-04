@@ -22,6 +22,9 @@
         <constructor-arg name="name" value="王五"></constructor-arg>
         <constructor-arg name="id" value="3"></constructor-arg>
         <constructor-arg name="age" value="18"></constructor-arg>
+        <constructor-arg name="classes">
+            <null /> <!-- Note: 注入一个空置 -->
+        </constructor-arg>
     </bean>
 
 </beans>
