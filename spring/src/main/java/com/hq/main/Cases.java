@@ -1,9 +1,7 @@
 package com.hq.main;
 
-import com.hq.entity.Classes;
-import com.hq.entity.DataSource;
-import com.hq.entity.Student;
-import com.hq.entity.User;
+import com.hq.entity.*;
+import com.hq.factory.StaticCarFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -93,7 +91,18 @@ public class Cases {
         System.out.println(student);
     }
     public void Case7() {
+        // Note：传统方式
+        //Car car = StaticCarFactory.getCar(1);
+        //System.out.println(car);
 
+        // Note: 静态工厂
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-factory.xml");
+        Car car = (Car) applicationContext.getBean("car1");
+        System.out.println(car);
+
+        // Note：实例工厂
+        Car car2 = (Car) applicationContext.getBean("car2");
+        System.out.println(car2);
     }
     public void Case8() {
 
