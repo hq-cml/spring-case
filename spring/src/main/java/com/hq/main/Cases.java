@@ -115,8 +115,9 @@ public class Cases {
         System.out.println(person2);
     }
     public void Case9() {
-
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-annotation.xml");
+        // Note: 被自动注入的类，id是类名字将首字改成母小写！所以这里是repository
+        Repository rp = (Repository) applicationContext.getBean("repository");
+        System.out.println(rp);
     }
-
-
 }
