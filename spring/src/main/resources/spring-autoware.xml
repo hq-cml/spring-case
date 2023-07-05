@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+">
+    <!-- Note: 通过byName的方式自动注入
+               解释，所谓通过名字是在Person类里面有个成员叫car，和下面的bean同名，所以才能注入
+               如果下面的bean不叫car，则注入失败！
+     -->
+    <bean id="person" class="com.hq.entity.Person" autowire="byName">
+        <property name="id" value="1"></property>
+        <property name="name" value="huaqi"></property>
+        <!-- Note：传统手动配置注入
+         <property name="car" ref="car"></property>
+        -->
+    </bean>
+
+    <!-- Note: 通过byType的方式自动注入
+               通过类型自动装载，缺点是如果同一个类型有两个bean，这里会异常
+     -->
+    <bean id="person2" class="com.hq.entity.Person" autowire="byType">
+        <property name="id" value="1"></property>
+        <property name="name" value="huaqi"></property>
+    </bean>
+
+    <bean id="car" class="com.hq.entity.Car">
+        <constructor-arg name="num" value="1"></constructor-arg>
+        <constructor-arg name="brand" value="奥迪"></constructor-arg>
+    </bean>
+</beans>

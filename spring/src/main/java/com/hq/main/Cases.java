@@ -105,7 +105,14 @@ public class Cases {
         System.out.println(car2);
     }
     public void Case8() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-autoware.xml");
+        // ByName
+        Person person = (Person) applicationContext.getBean("person");
+        System.out.println(person);
 
+        // ByType
+        Person person2 = (Person) applicationContext.getBean("person2");
+        System.out.println(person2);
     }
     public void Case9() {
 
