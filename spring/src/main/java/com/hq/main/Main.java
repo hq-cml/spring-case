@@ -37,6 +37,9 @@ public class Main {
             case "case9":
                 cs.Case9();
                 break;
+            case "case10":
+                cs.Case10();
+                break;
             default:
                 System.out.println("Not support");
         }

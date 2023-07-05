@@ -2,6 +2,7 @@ package com.hq.main;
 
 import com.hq.entity.*;
 import com.hq.factory.StaticCarFactory;
+import com.hq.webservice.controller.MyController;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -119,5 +120,16 @@ public class Cases {
         // Note: 被自动注入的类，id是类名字将首字改成母小写！所以这里是repository
         Repository rp = (Repository) applicationContext.getBean("repository");
         System.out.println(rp);
+    }
+    public void Case10() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-webservice.xml");
+//        String[] names = applicationContext.getBeanDefinitionNames();
+//        for(String name:names) {
+//            System.out.println(name);
+//        }
+
+        MyController myController = applicationContext.getBean(MyController.class);
+        String result = myController.service(new Double(85));
+        System.out.println(result);
     }
 }

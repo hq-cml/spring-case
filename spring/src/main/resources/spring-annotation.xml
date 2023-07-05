@@ -11,15 +11,4 @@
     -->
     <context:component-scan base-package="com.hq.entity"></context:component-scan>
 
-
-<!--    <bean id="controller" class="com.hq.controller.MyController">-->
-<!--        <property name="myService" ref="service"></property>-->
-<!--    </bean>-->
-<!--    <bean id="service" class="com.hq.service.impl.MyServiceImpl">-->
-<!--        <property name="myRepository" ref="repository"></property>-->
-<!--    </bean>-->
-<!--    <bean id="repository" class="com.hq.repository.impl.MyRepositoryImpl"></bean>-->
-    <!--    自动扫描包-->
-<!--    <context:component-scan base-package="com.hq">-->
-<!--    </context:component-scan>-->
 </beans>
