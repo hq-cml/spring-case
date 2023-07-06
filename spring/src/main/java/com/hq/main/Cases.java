@@ -1,5 +1,8 @@
 package com.hq.main;
 
+import com.hq.aop.Cal;
+import com.hq.aop.MyInvocationHandler;
+import com.hq.aop.impl.CalImpl;
 import com.hq.entity.*;
 import com.hq.factory.StaticCarFactory;
 import com.hq.ioc.MyClassPathXmlApplicationContext;
@@ -140,5 +143,26 @@ public class Cases {
         ApplicationContext applicationContext = new MyClassPathXmlApplicationContext("spring-ioc.xml");
         Car car = (Car) applicationContext.getBean("car");
         System.out.println("My: " + car);
+    }
+
+    // 测试Aop
+    public void Case12() {
+        // Note：创建委托对象
+        Cal cal = new CalImpl();
+
+        // Note: 获取动态代理类对象
+        MyInvocationHandler myInvocationHandler = new MyInvocationHandler();
+        Cal proxy = (Cal)myInvocationHandler.bind(cal); // Note: proxy是一个代理对象，所以它必然能够放入代理类的引用里面
+
+        // Note: 最终调用的是动态代理类对象的方法，底层会触发invoke方法
+        proxy.add(10,3);
+        proxy.mul(10,3);
+    }
+
+    public void Case13() {
+
+//        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-aop.xml");
+//        Cal cal = (Cal) applicationContext.getBean("calImpl");
+//        System.out.println(cal.add(10,3));
     }
 }
