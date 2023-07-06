@@ -19,7 +19,9 @@ import org.springframework.core.io.Resource;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Locale;
@@ -31,8 +33,9 @@ import java.util.Map;
 //       同时，原版是根据解析spring.xml文件来实现的bean创建，这里也需要在自己的实现类中实现这块逻辑
 public class MyClassPathXmlApplicationContext implements ApplicationContext {
 
-    // 自己的容器，用一个map
+    // Note: 自己的容器，用一个map
     private Map<String, Object> iocMap;
+
     // Note: 构造器接受一个xml文件，解析这个文件，生成bean
     public MyClassPathXmlApplicationContext(String path) {
         iocMap = new HashMap<>();
@@ -56,6 +59,7 @@ public class MyClassPathXmlApplicationContext implements ApplicationContext {
                 // Note：获取bean的类、属性、id等信息
                 String idStr = bean.attributeValue("id");
                 String className = bean.attributeValue("class");
+
                 // Note: 结合反射机制动态创建对象
                 Class clazz = Class.forName(className); // Note: 根据名字获取运行时类
                 //System.out.println(clazz);
@@ -63,7 +67,35 @@ public class MyClassPathXmlApplicationContext implements ApplicationContext {
                 Object object = constructor.newInstance(); // Note: 根据无参构造创建出对象
                 //System.out.println(object);
 
-                // 存入容器
+                // Note: 给属性赋值
+                Iterator<Element> beanIter = bean.elementIterator();
+                while(beanIter.hasNext()){
+                    // Note: 这里就是每一行property属性了
+                    Element property = beanIter.next();
+                    //System.out.println(property);
+                    String propertyName = property.attributeValue("name");
+                    String propertyValue = property.attributeValue("value");
+                    //num-setNum,brand-setBrand
+                    // Note：获取setter⽅法名字，用来准别给属性赋值
+                    String methodName = "set"+propertyName.substring(0,1).toUpperCase()+propertyName.substring(1);
+                    // Note：只靠方法名字还不行，因为Java存在重载机制，所以还需要获取属性
+                    Field field = clazz.getDeclaredField(propertyName);
+                    Method method = clazz.getMethod(methodName,field.getType()); //Note: 这个method就是真正最后的setXX()方法
+                    //Note： 类型转换
+                    Object value = propertyValue;
+                    switch (field.getType().getName()){
+                        case "java.lang.Integer":
+                            value = Integer.parseInt(propertyValue);
+                            break;
+                        case "java.lang.Double":
+                            value = Double.parseDouble(propertyValue);
+                            break;
+                    }
+                    //Note: 真正的调⽤setter⽅法
+                    method.invoke(object, value);
+                }
+
+                // Note: 存入容器
                 iocMap.put(idStr, object);
             }
 
@@ -78,6 +110,8 @@ public class MyClassPathXmlApplicationContext implements ApplicationContext {
         } catch (InstantiationException e) {
             e.printStackTrace();
         } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (NoSuchFieldException e) {
             e.printStackTrace();
         }
     }
