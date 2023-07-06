@@ -145,7 +145,7 @@ public class Cases {
         System.out.println("My: " + car);
     }
 
-    // 测试Aop
+    // 测试自己实现Aop
     public void Case12() {
         // Note：创建委托对象
         Cal cal = new CalImpl();
@@ -159,10 +159,14 @@ public class Cases {
         proxy.mul(10,3);
     }
 
+    // Spring的Aop
     public void Case13() {
+        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-aop.xml");
+        Cal cal = (Cal) applicationContext.getBean("calImpl");
+        cal.add(10,3);
 
-//        ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-aop.xml");
-//        Cal cal = (Cal) applicationContext.getBean("calImpl");
-//        System.out.println(cal.add(10,3));
+        System.out.println("-----------------");
+
+        cal.div(10, 0); // 模拟出异常
     }
 }
