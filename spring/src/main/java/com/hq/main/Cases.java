@@ -2,6 +2,7 @@ package com.hq.main;
 
 import com.hq.entity.*;
 import com.hq.factory.StaticCarFactory;
+import com.hq.ioc.MyClassPathXmlApplicationContext;
 import com.hq.webservice.controller.MyController;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -121,6 +122,8 @@ public class Cases {
         Repository rp = (Repository) applicationContext.getBean("repository");
         System.out.println(rp);
     }
+
+    // 一个完整例子
     public void Case10() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-webservice.xml");
 //        String[] names = applicationContext.getBeanDefinitionNames();
@@ -131,5 +134,11 @@ public class Cases {
         MyController myController = applicationContext.getBean(MyController.class);
         String result = myController.service(new Double(85));
         System.out.println(result);
+    }
+
+    public void Case11() {
+        ApplicationContext applicationContext = new MyClassPathXmlApplicationContext("spring-ioc.xml");
+        Car car = (Car) applicationContext.getBean("car");
+        System.out.println("My: " + car);
     }
 }

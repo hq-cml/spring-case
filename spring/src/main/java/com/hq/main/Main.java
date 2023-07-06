@@ -40,6 +40,9 @@ public class Main {
             case "case10":
                 cs.Case10();
                 break;
+            case "case11":
+                cs.Case11();
+                break;
             default:
                 System.out.println("Not support");
         }
