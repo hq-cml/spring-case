@@ -35,7 +35,7 @@
   </filter>
   <filter-mapping>
     <filter-name>encodingFilter</filter-name>
-    <url-pattern>/*</url-pattern>
+    <url-pattern>/*</url-pattern>  <!-- Note: 拦截所有请求 -->
   </filter-mapping>
 
 </web-app>
