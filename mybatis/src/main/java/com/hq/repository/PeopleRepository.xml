@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Note: namespace就是接⼝的全限定类名（带着包名的类名） -->
+<mapper namespace="com.hq.repository.PeopleRepository">
+    <!-- Note: insert标签 -->
+    <insert id="save" parameterType="com.hq.entity.People">
+        insert into people(id, name, money) values(#{id}, #{name},#{money}) <!-- Note: #{} 表示从参数对象里面取 -->
+    </insert>
+
+    <!-- Note: delete标签 -->
+    <delete id="deleteById" parameterType="java.lang.Integer">
+        delete from people where id = #{id}
+    </delete>
+
+    <!-- Note: udpate标签 -->
+    <update id="update" parameterType="com.hq.entity.People">
+        update people set name = #{name},money = #{money} where id = #{id}
+    </update>
+
+    <!-- Note: seelct标签 -->
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.hq.entity.People">
+        select * from people where id = #{id}
+    </select>
+    <select id="findAll" resultType="com.hq.entity.People">
+        select * from people
+    </select>
+</mapper>

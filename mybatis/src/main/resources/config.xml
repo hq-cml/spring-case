@@ -19,5 +19,6 @@
     <!-- Note: 注册mapper.xml文件 -->
     <mappers>
         <mapper resource="com/hq/mapper/PeopleMapper.xml"></mapper>
+        <mapper resource="com/hq/repository/PeopleRepository.xml"></mapper>
     </mappers>
 </configuration>
