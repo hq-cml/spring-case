@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- Note：定义命名空间，通常就是mapper文件类的路径 -->
+<mapper namespace="com.hq.mapper.PeopleMapper">
+    <!-- Note: select语句，用select标签
+               id: 方法名字
+               parameterType：参数类型
+               resultType：结果和POJO的映射关系
+     -->
+    <select id="findById" parameterType="java.lang.Integer" resultType="com.hq.entity.People">
+        select * from people where id=#{id}
+    </select>
+
+</mapper>
