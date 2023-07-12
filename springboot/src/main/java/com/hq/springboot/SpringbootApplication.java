@@ -21,12 +21,13 @@ public class SpringbootApplication {
          SpringApplication.run(SpringbootApplication.class, args);
 
         /*
-         * Note: Ioc里面，除了上面自己写的业务的类的bean，还会有大量的bean，下面的方法支持获取单个bean或者全部的bean名字
+         * Note: Ioc里面，除了上面自己写的业务的类的bean，还会有大量系统预置的bean，比如DispatchServerlet等等
+         *       下面的方法支持获取单个bean或者全部的bean名字
          *       ConfigurableApplicationContext上下文，可以简单理解为就是Ioc容器，和Spring是一样的
 
          * ConfigurableApplicationContext configurableApplicationContext = SpringApplication.run(SpringbootApplication.class, args);
 
-         * // Note: 获取单个Bean，根据运行实例额
+         * // Note: 获取单个Bean，根据运行时类
          * HelloHandler helloHandler = configurableApplicationContext.getBean(HelloHandler.class);
          * System.out.println(helloHandler);
 

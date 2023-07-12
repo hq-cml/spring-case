@@ -1,0 +1,10 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /springboot
+    session:
+      cookie:
+        max-age: 100
+      timeout: 100
+  tomcat:
+    uri-encoding: UTF-8
