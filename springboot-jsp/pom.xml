@@ -2,10 +2,10 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.hq</groupId>
-  <artifactId>spbootjsp</artifactId>
+  <artifactId>springboot-jsp</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>spbootjsp Maven Webapp</name>
+  <name>springboot-jsp Maven Webapp</name>
   <url>http://maven.apache.org</url>
 
   <!-- Note: 引入Parent，使得整个工程变成一个SpringBoot工程
@@ -48,6 +48,6 @@
 
   </dependencies>
   <build>
-    <finalName>spbootjsp</finalName>
+    <finalName>springboot-jsp</finalName>
   </build>
 </project>
