@@ -16,14 +16,14 @@ public class UserHandler {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/findAll") // Note:
+    @GetMapping("/findAll") // Note: Get请求
     public ModelAndView findAll(){
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user");
+        modelAndView.setViewName("user"); // Note：访问/user.jsp
         modelAndView.addObject("list",userService.findAll());
         return modelAndView;
     }
-    @GetMapping("findById/{id}") // Note:
+    @GetMapping("findById/{id}") // Note: 带参数
     public ModelAndView findById(@PathVariable("id") Integer id){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("update");
@@ -31,10 +31,10 @@ public class UserHandler {
         return modelAndView;
     }
 
-    @PostMapping("/save") // Note:
+    @PostMapping("/save") // Note: Post请求接口
     public String save(User user){
         userService.save(user);
-        return "redirect:/user/findAll";// Note:
+        return "redirect:/user/findAll";// Note: 重定向
     }
 
     @GetMapping("/deleteById/{id}")
