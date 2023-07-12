@@ -1,0 +1,8 @@
+server:
+  port: 8181
+# Note：配置Jsp的前缀和后缀，这个在SpringMVC的时候是写在xml中的
+spring:
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
