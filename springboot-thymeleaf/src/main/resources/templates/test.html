@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org"> <!-- Note: 注意这里不能闭合html标签！！ -->
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p th:if="${score>=90}">优秀</p>
+    <p th:if="${score<90}">良好</p>
+
+    <p th:unless="${score>=90}">优秀</p>
+    <p th:unless="${score<90}">良好</p>
+
+    <div th:switch="${studentId}">
+        <p th:case="1">张三</p>
+        <p th:case="2">李四</p>
+        <p th:case="3">王五</p>
+    </div>
+
+    <form th:action="${url}" method="post">
+        <input type="submit"/>
+    </form>
+
+    <table>
+        <tr>
+            <th>编号</th>
+            <th>姓名</th>
+        </tr>
+        <tr th:each="user:${list}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+        </tr>
+    </table>
+
+    <input type="text" th:value="${value}"/>
+
+    <img th:src="${src}"/>
+
+    <a th:href="${href}">百度</a>
+
+    <select>
+        <option
+                th:each="user:${list}"
+                th:value="${user.id}"
+                th:text="${user.name}"
+                th:selected="${user.name == name}"
+        ></option>
+    </select>
+
+    <input th:attr="value=${attr}"/><br/>
+    <input th:value="${attr}"/>
+
+    <p th:text="${#request.getAttribute('value')}"></p>
+    <p th:text="${#session.getAttribute('value')}"></p>
+    <p th:text="${#servletContext.getAttribute('value')}"></p>
+    <p th:text="${#response}"></p>
+
+    <p th:text="${name}"></p>
+    <p th:text="${#request.getAttribute('name')}"></p>
+    <p th:text="${session.name}"></p>
+    <p th:text="${#session.getAttribute('name')}"></p>
+</body>
+</html>
