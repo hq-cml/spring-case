@@ -9,4 +9,13 @@ public class SecurityHandler {
     public String index(){
         return "index";
     }
+
+    @GetMapping("/admin")
+    public String admin(){
+        return "admin";
+    }
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 }
