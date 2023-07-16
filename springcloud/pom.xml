@@ -15,6 +15,7 @@
         <module>zuul-gateway</module>
         <module>ribbon-lb</module>
         <module>feign-webclient</module>
+        <module>hystrix-fallttolerant</module>
     </modules>
 
     <properties>
