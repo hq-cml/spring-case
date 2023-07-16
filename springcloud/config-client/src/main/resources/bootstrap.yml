@@ -1,0 +1,11 @@
+# Note: 注意这个文件名字！！不再是application.yml，因为此项目已经不再读取本地配置，而是走的分布式配置！
+# Note: 目标：读取到nativeconfigserver项目的resource/shared/configclient-dev.yml
+spring:
+  application:
+    name: configclient  # Note: 这里和下面的active，通过-拼接，得到 ‘configclient-dev.yml’
+  profiles:
+    active: dev # Note: 和上拼接
+  cloud:
+    config:
+      uri: http://localhost:8762 # Note: 远程配置中心地址
+      fail-fast: true

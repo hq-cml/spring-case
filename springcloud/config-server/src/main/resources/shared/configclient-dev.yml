@@ -1,0 +1,3 @@
+server:  # Note：用来给client测试用的
+  port: 8070
+foo: foo version 1
