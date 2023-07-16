@@ -12,6 +12,7 @@
         <module>eureka</module>
         <module>provider</module>
         <module>consumer</module>
+        <module>zuul-gateway</module>
     </modules>
 
     <properties>
