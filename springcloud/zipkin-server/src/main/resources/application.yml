@@ -1,0 +1,7 @@
+server:
+  port: 9090
+management: #Note: 加上以下一段配置，不报错。。。
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
