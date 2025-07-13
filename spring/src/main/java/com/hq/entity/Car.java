@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor // 带餐构造
+@AllArgsConstructor // 带参构造
 @NoArgsConstructor
 public class Car {
     private Integer num;

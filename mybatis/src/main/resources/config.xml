@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- Note: 头文件需要引入，比如这个DTD，不引入的话，某些标签用不了 -->
 <configuration>
     <!--Note: 配置MyBatis运行环境-->
     <environments default="development">
         <!-- Note: environments是列表形式，用于多环境配置部署 -->
         <environment id="development">
+            <!-- Note: 事务管理，交给JDBC -->
             <transactionManager type="JDBC"></transactionManager>
             <!-- Note：数据源 -->
             <dataSource type="POOLED">

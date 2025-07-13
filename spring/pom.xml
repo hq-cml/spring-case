@@ -15,35 +15,35 @@
     </properties>
 
     <dependencies>
-        <!-- Spring Framework -->
+        <!-- Note: Spring Framework -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
             <version>5.2.3.RELEASE</version>
         </dependency>
 
-        <!-- Lombok -->
+        <!-- Note: Lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.10</version>
         </dependency>
 
-        <!-- Mysql驱动 -->
+        <!-- Note: Mysql驱动 -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.19</version>
         </dependency>
 
-        <!-- dom4j，用于解析xml -->
+        <!-- Note: dom4j，用于解析xml -->
         <dependency>
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>1.6.1</version>
         </dependency>
 
-        <!-- Aop -->
+        <!-- Note: Aop -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
@@ -64,7 +64,7 @@
                 <version>1.4</version>
                 <executions>
                     <execution>
-                        <phase>package</phase>   <!-- 阶段package和目标shade绑定 -->
+                        <phase>package</phase>   <!-- Note：阶段package和目标shade绑定 -->
                         <goals>
                             <goal>shade</goal>
                         </goals>

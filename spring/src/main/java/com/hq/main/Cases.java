@@ -18,7 +18,7 @@ public class Cases {
 
         // Note: Spring方式，利用Ioc来直接获取
         //       IoC容器自动创建对象，开发者只需要取出对象
-        //       ApplicationContext可以简单理解为就是IoC的上下文，解析spring.xml文件，就会预先生成对象存于Ioc中
+        //       ApplicationContext可以简单理解为就是IoC的上下文，解析spring.xml文件，就会预先生成对象注入到Ioc容器中
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring.xml");
 
         // Note: student是xml中的id
@@ -43,12 +43,11 @@ public class Cases {
 
     public void Case2() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-di.xml");
-        // Note: 当前Ioc中所有的bean
-        /*
-        String[] names = applicationContext.getBeanDefinitionNames();
-        for(String name:names) {
-            System.out.println(name);
-        }
+        /** Note: 当前Ioc中所有的bean
+         * String[] names = applicationContext.getBeanDefinitionNames();
+         * for(String name:names) {
+         * System.out.println(name);
+         * }
          */
         Classes classes = (Classes) applicationContext.getBean("classes");
         Student student = (Student) applicationContext.getBean("student");
@@ -62,7 +61,7 @@ public class Cases {
         User user1 = (User) applicationContext.getBean("user1");
         User user2 = (User) applicationContext.getBean("user1");
         //System.out.println(user1.equals(user2));
-        System.out.println(user1==user2); // Note：== 直接判断引用地址
+        System.out.println(user1==user2); // Note：true == 直接判断引用地址
         System.out.println("--------------------");
 
         // Note: scope作用域，prototype 原型模式
@@ -71,7 +70,7 @@ public class Cases {
         User user3 = (User) applicationContext.getBean("user2");
         User user4 = (User) applicationContext.getBean("user2");
         //System.out.println(user3.equals(user4));
-        System.out.println(user3==user4);
+        System.out.println(user3==user4); // Note：false
         System.out.println("--------------------");
 
         // Note: bean的继承
@@ -95,6 +94,7 @@ public class Cases {
         Student student = (Student) applicationContext.getBean("student");
         System.out.println(student);
     }
+
     public void Case7() {
         // Note：传统方式
         //Car car = StaticCarFactory.getCar(1);
@@ -109,6 +109,7 @@ public class Cases {
         Car car2 = (Car) applicationContext.getBean("car2");
         System.out.println(car2);
     }
+
     public void Case8() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-autoware.xml");
         // ByName
@@ -119,6 +120,7 @@ public class Cases {
         Person person2 = (Person) applicationContext.getBean("person2");
         System.out.println(person2);
     }
+
     public void Case9() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-annotation.xml");
         // Note: 被自动注入的类，id是类名字将首字改成母小写！所以这里是repository
@@ -126,7 +128,7 @@ public class Cases {
         System.out.println(rp);
     }
 
-    // 一个完整例子
+    // Note：一个完整的webservice例子
     public void Case10() {
         ApplicationContext applicationContext = new ClassPathXmlApplicationContext("spring-webservice.xml");
 //        String[] names = applicationContext.getBeanDefinitionNames();

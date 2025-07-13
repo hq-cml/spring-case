@@ -10,7 +10,7 @@
     <!-- Note: 导入外部资源标签context:property-placeholder -->
     <context:property-placeholder location="classpath:jdbc.properties"></context:property-placeholder>
     <bean id="dataSource" class="com.hq.entity.DataSource">
-        <property name="user" value="${user}"></property> <!-- SpEL表达式取值-->
+        <property name="user" value="${user}"></property> <!-- Note：SpEL表达式取值-->
         <property name="password" value="${password}"></property>
         <property name="url" value="${url}"></property>
         <property name="driverName" value="${driverName}"></property>

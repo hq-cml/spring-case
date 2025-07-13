@@ -11,8 +11,9 @@ public class Student {
     private Integer id;
     private String name;
     private  Integer age;
-    private Classes classes; // Note：注入
+    private Classes classes; // Note：DI注入
 
+    // Note: 自己实现无参构造，所以@NoArgsConstructor必须注销掉，否则报错
     public Student() {
         System.out.println("无参构造创建Student");
     }

@@ -12,7 +12,7 @@ public class LoggerAspect {
     // Note: 切面方法，这个@Before注解表示要在CalImpl.add方法之前调用
     //       add方法不能只写add，还要带上类路径
     //@Before("execution(public int com.hq.aop.impl.CalImpl.add(..))")
-    @Before("execution(public int com.hq.aop.impl.CalImpl.*(..))") // Note: 用*表示任意方法
+    @Before("execution(public int com.hq.aop.impl.CalImpl.*(..))") // Note: 用*表示任意方法，..表示参数
     public void before(JoinPoint joinpoint) {
         // Note: JoinPoint是连接点，连接了委托类和切面类
         //       通过这个连接点可以获取函数名字和参数值

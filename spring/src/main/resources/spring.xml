@@ -7,10 +7,12 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 ">
 
-    <!-- Note：id是创建对象的标识，class表示要生成哪个类的对象 -->
+    <!-- Note：id是创建对象的标识，class表示要生成哪个类的对象
+               底层基于无参构造
+    -->
     <bean id="student" class="com.hq.entity.Student"></bean>
 
-    <!-- Note：基于无参构造，并且赋初值，底层通过Setter()方法 -->
+    <!-- Note：基于无参构造，并且赋初值，底层通过Setter()方法赋值 -->
     <bean id="student2" class="com.hq.entity.Student">
         <property name="id" value="1"></property>
         <property name="name" value="huaqi"></property>

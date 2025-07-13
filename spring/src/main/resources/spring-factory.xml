@@ -12,7 +12,7 @@
                所以这里得到的是Car，而不是Factory
      -->
     <bean id="car1" class="com.hq.factory.StaticCarFactory" factory-method="getCar">
-        <constructor-arg value="1"></constructor-arg>
+        <constructor-arg value="1"></constructor-arg>  <!-- Note：getCar方法的参数！ -->
     </bean>
 
     <!-- Note: 通过实例工厂类，得到bean，
